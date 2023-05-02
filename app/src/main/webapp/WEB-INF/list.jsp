@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ taglib uri="jakarta.tags.core" prefix="c" %>
 
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -14,6 +15,12 @@
     <body>
 
         <h1>Livros</h1>
+
+        <c:forEach var = "item" items = "${livros}">
+
+            ${item.titulo} <br/>
+
+        </c:forEach>
 
     </body>
 
