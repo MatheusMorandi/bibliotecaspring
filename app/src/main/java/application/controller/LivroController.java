@@ -25,4 +25,11 @@ public class LivroController {
 
     }
 
+    @RequestMapping("/insert")
+    public String insert(){
+
+        return "WEB-INF/insert.jsp";
+
+    }
+
 }
