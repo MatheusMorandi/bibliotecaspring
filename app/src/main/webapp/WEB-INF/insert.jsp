@@ -15,7 +15,7 @@
 
         <h1>Novo Livro</h1>
 
-        <form action = "" method = "post">
+        <form action = "/insert" method = "post">
             
             <input type = "text" name = "titulo"/>
             
