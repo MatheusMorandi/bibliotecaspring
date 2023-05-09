@@ -70,4 +70,49 @@ public class LivroController {
 
     }
 
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public String update(@RequestParam("titulo") String titulo, @RequestParam("id") int id){
+
+        Optional<Livro> livro = livroRepo.findById(id);
+
+        if(!livro.isPresent()){
+
+            return "redirect:/livro";
+
+        }
+
+        livro.get();
+
+        livroRepo.save(livro.get());
+
+        return "redirect:/livro";
+
+    }
+
+    @RequestMapping("/delete")
+    public String delete(Model model, @RequestParam("id") int id){
+
+        Optional<Livro> livro = livroRepo.findById(id);
+
+        if(!livro.isPresent()){
+
+            return "redirect:/livro";
+
+        }
+
+        model.addAttribute("livro", livro.get());  
+
+        return "WEB-INF/delete.jsp";
+
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public String delete(@RequestParam("id") int id){
+
+        livroRepo.deleteById(id);
+
+        return "redirect:/livro";
+        
+    }
+
 }
