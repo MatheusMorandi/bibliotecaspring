@@ -4,6 +4,8 @@ import application.model.Livro;
 
 import application.model.LivroRepository;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
@@ -48,6 +50,23 @@ public class LivroController {
         livroRepo.save(livro);
  
         return "redirect:/livro";
+
+    }
+
+    @RequestMapping("/update")
+    public String update(Model model, @RequestParam("id") int id){
+
+        Optional<Livro> livro = livroRepo.findById(id);
+
+        if(!livro.isPresent()){
+
+            return "redirect:/livro";
+
+        }
+
+        model.addAttribute("livro", livro.get());  
+
+        return "WEB-INF/update.jsp";
 
     }
 
