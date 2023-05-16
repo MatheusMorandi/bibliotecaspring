@@ -12,9 +12,9 @@ import jakarta.persistence.Table;
 
 @Entity
 
-@Table(name="livros")
+@Table(name="genero")
 
-public class Livro {
+public class Genero {
 
     @Id
 
@@ -22,16 +22,7 @@ public class Livro {
 
     private int id;
 
-    private String titulo;
-
-    private String isbn;
-
-    public String getIsbn() {
-        return isbn;
-    }
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
+    private String nome;
 
     public int getId() {
         return id;
@@ -39,12 +30,13 @@ public class Livro {
     public void setId(int id) {
         this.id = id;
     }
-
-    public String getTitulo() {
-        return titulo;
+    
+    public String getNome() {
+        return nome;
     }
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
+    
     
 }
