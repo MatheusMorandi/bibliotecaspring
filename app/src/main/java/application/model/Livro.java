@@ -6,6 +6,10 @@ import jakarta.persistence.GenerationType;
 
 import jakarta.persistence.Id;
 
+import jakarta.persistence.JoinColumn;
+
+import jakarta.persistence.ManyToOne;
+
 import jakarta.persistence.Entity;
 
 import jakarta.persistence.Table;
@@ -26,18 +30,18 @@ public class Livro {
 
     private String isbn;
 
-    private String genero;
+    @ManyToOne
 
-    public String getGenero() {
+    @JoinColumn(name = "id_genero")
+    
+    private Genero genero;
 
+
+    public Genero getGenero() {
         return genero;
-
     }
-
-    public void setGenero(String genero) {
-
+    public void setGenero(Genero genero) {
         this.genero = genero;
-
     }
 
     public String getIsbn() {
@@ -72,7 +76,7 @@ public class Livro {
     public void setTitulo(String titulo) {
 
         this.titulo = titulo;
-        
+
     }
     
 }
