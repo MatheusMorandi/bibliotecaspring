@@ -26,25 +26,53 @@ public class Livro {
 
     private String isbn;
 
-    public String getIsbn() {
-        return isbn;
+    private String genero;
+
+    public String getGenero() {
+
+        return genero;
+
     }
+
+    public void setGenero(String genero) {
+
+        this.genero = genero;
+
+    }
+
+    public String getIsbn() {
+
+        return isbn;
+
+    }
+
     public void setIsbn(String isbn) {
+
         this.isbn = isbn;
     }
 
     public int getId() {
+
         return id;
+
     }
+
     public void setId(int id) {
+
         this.id = id;
+
     }
 
     public String getTitulo() {
+
         return titulo;
+
     }
+
     public void setTitulo(String titulo) {
+
         this.titulo = titulo;
+        
     }
     
 }

@@ -30,6 +30,8 @@
 
                     <th>Título</th>
 
+                    <th>ISBN</th>
+
                     <th>&nbsp;</th>
 
                 </tr>
@@ -41,6 +43,8 @@
                         <td>${item.id}</td>
 
                         <td>${item.titulo}</td>
+
+                        <td>${item.isbn}</td>
 
                         <td>
 
