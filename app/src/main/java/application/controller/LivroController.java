@@ -14,15 +14,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
-import application.model.Genero;
-
 import application.model.Livro;
 
 import application.model.LivroRepository;
 
 @Controller
-
-@RequestMapping("/livro")
 
 public class LivroController {
 
@@ -30,7 +26,7 @@ public class LivroController {
 
     private LivroRepository livroRepo;
 
-    @RequestMapping("/list")
+    @RequestMapping("/livro")
 
     public String list(Model model) {
 
@@ -50,7 +46,7 @@ public class LivroController {
 
     @RequestMapping(value = "/insert", method = RequestMethod.POST)
 
-    public String insert(@RequestParam("titulo") String titulo, @RequestParam("isbn") String isbn, @RequestParam("genero") Genero genero) {
+    public String insert(@RequestParam("titulo") String titulo, @RequestParam("isbn") String isbn) {
 
         Livro livro = new Livro();
 
@@ -58,11 +54,9 @@ public class LivroController {
 
         livro.setIsbn(isbn);
 
-        livro.setGenero(genero);
-
         livroRepo.save(livro);
 
-        return "redirect:/livro/list";
+        return "redirect:/livro";
     }
 
     @RequestMapping("/update")
@@ -73,7 +67,7 @@ public class LivroController {
 
         if(!livro.isPresent()) {
 
-            return "redirect:/livro/list";
+            return "list";
         }
 
         model.addAttribute("livro", livro.get());
@@ -84,25 +78,23 @@ public class LivroController {
 
     @RequestMapping(value = "/update", method = RequestMethod.POST)
 
-    public String update(@RequestParam("titulo") String titulo, @RequestParam("id") int id, @RequestParam("isbn") String isbn, @RequestParam("genero") Genero genero)
+    public String update(@RequestParam("titulo") String titulo, @RequestParam("id") int id, @RequestParam("isbn") String isbn)
     {
         Optional<Livro> livro = livroRepo.findById(id);
 
         if(!livro.isPresent()) {
 
-            return "redirect:/livro/list";
+            return "redirect:/livro";
             
         }
 
         livro.get().setTitulo(titulo);
 
-        livro.get().setGenero(genero);
-
         livro.get().setIsbn(isbn);
 
         livroRepo.save(livro.get());
 
-        return "redirect:/livro/list";
+        return "redirect:/livro";
 
     }
 
@@ -114,7 +106,7 @@ public class LivroController {
 
         if(!livro.isPresent()) {
 
-            return "redirect:/livro/list";
+            return "redirect:/livro";
 
         }
 
@@ -130,7 +122,7 @@ public class LivroController {
 
         livroRepo.deleteById(id);
 
-        return "redirect:/livro/list";
+        return "redirect:/livro";
 
     }
 }

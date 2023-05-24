@@ -12,7 +12,7 @@ public class IndexController {
 
     public String home() {
 
-        return "home.jsp";
+        return "home";
 
     }
 }
