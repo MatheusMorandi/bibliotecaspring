@@ -32,6 +32,8 @@
 
                     <th>ISBN</th>
 
+                    <th>Genero</th>
+
                     <th>&nbsp;</th>
 
                 </tr>
@@ -45,6 +47,8 @@
                         <td>${item.titulo}</td>
 
                         <td>${item.isbn}</td>
+
+                        <td>${item.genero.nome}</td>
 
                         <td>
 

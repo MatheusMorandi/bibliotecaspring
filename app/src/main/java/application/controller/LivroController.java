@@ -18,6 +18,8 @@ import application.model.Livro;
 
 import application.model.LivroRepository;
 
+import application.model.GeneroRepository;
+
 @Controller
 
 public class LivroController {
@@ -25,6 +27,9 @@ public class LivroController {
     @Autowired
 
     private LivroRepository livroRepo;
+
+    @Autowired
+    private GeneroRepository generoRepo;    
 
     @RequestMapping("/livro")
 
@@ -38,7 +43,9 @@ public class LivroController {
 
     @RequestMapping("/insert")
 
-    public String insert() {
+    public String insert(Model model) {
+
+        model.addAttribute("generos", generoRepo.findAll());
 
         return "insert";
 
